@@ -1,0 +1,35 @@
+<h1>学習塾　新規登録</h1>
+<%= form_for(@school) do |f| %>
+
+    <%= f.label :name, "塾名" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.text_field :email %>
+
+    <%= f.label :address1, "郵便番号" %>
+    <%= f.text_field :address1 %>
+
+    <%= f.label :address2, "都道府県" %>
+    <%= f.text_field :address2 %>
+
+    <%= f.label :address3, "市区町村・番地・建物名" %>
+    <%= f.text_field :address3 %>
+
+    <%= f.label :phone, "電話番号" %>
+    <%= f.text_field :phone %>
+
+    <%= f.label :url, "ホームページのURL" %>
+    <%= f.text_field :url %>
+    
+    <%= f.label :chara, "塾の特徴" %>
+    <%= f.text_area :chara %>
+    
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, "確認" %>
+    <%= f.password_field :password_confirmation %>
+    
+    <%= f.submit "新規登録" %>
+<% end %>

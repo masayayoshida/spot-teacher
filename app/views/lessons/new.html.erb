@@ -1,0 +1,14 @@
+<% if logged_in? %>
+
+  <%= form_for(@lesson) do |f| %>
+    <label>講座名</label>
+    <%= f.text_field :name, class: 'form-control' %>
+    <label>日時</label>
+    <%= f.datetime_select :lesson_date, {} %>〜
+    <%= f.time_select :end_time, {} %>
+    <%= f.submit '登録', class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+    ログインをしてください。
+    <%= link_to "ログイン画面へ", login_url %>
+<% end %>

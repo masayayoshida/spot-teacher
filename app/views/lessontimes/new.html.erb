@@ -1,0 +1,30 @@
+  <table  class="table table-striped">
+    <tr>
+      <th></th>
+      <% i = 0 %>
+      <% while i < 7 %>
+        <th><%= (Date.tomorrow + i.day).strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[(Date.tomorrow.+ i.day).wday]})") %></th>
+        <% i += 1 %>
+      <% end %>
+    </tr>
+    
+    <% k = 14 %>
+    <% while k < 22 %>
+    <tr>
+      <td><%= k %>:00</td>
+        <% l = 1 %>
+        <% while l < 8 %>
+      <td>
+        <%  @d = (Date.today + l).strftime("%Y%m%d") %>
+        <% if current_school.appointing?(@d + (k).to_s) %>
+          <%= link_to "◯", lessontimes_cancel_path(:appotime => (@d + (k).to_s)) , :method => :delete %>
+        <% else %>
+          <%= link_to "不可", lessontimes_path(:appotime => (@d + (k).to_s)) , :method => :post %>
+        <% end %>
+      </td>
+        <% l += 1 %>
+        <% end %>
+    </tr>
+      <% k += 2 %>
+      <% end %>
+  </table>

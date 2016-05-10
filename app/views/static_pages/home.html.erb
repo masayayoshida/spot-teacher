@@ -1,0 +1,66 @@
+<h1>スポットで教えてくれる学習塾を探そう！</h1>
+
+  
+　<% @school.each do |school| %>
+　  <div class="panel panel-primary">
+　    テストテスト
+　    <div class="panel-heading">
+　      <%= school.name %>
+　    </div>
+      <div class="panel-body">
+        <%= school.chara %>
+      </div>
+      
+    <table  class="table table-striped">
+      <caption>スポット指導が可能な日</caption>
+      <tr>
+        <th></th>
+        <% i = 0 %>
+        <% while i < 7 %>
+          <th><%= (Date.tomorrow + i.day).strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[(Date.tomorrow.+ i.day).wday]})") %></th>
+          <% i += 1 %>
+        <% end %>
+      </tr>
+    
+      <% k = 14 %>
+      <% while k < 22 %>
+      <tr>
+        <td><%= k %>:00</td>
+          <% l = 1 %>
+          <% while l < 8 %>
+        <td>
+          <%  @d = (Date.today + l).strftime("%Y%m%d") %>
+          <% if school.appointing?(@d + (k).to_s) %>
+            <%= link_to "◯" %>
+          <% else %>
+            <%= "-" %>
+          <% end %>
+        </td>
+          <% l += 1 %>
+          <% end %>
+      </tr>
+        <% k += 2 %>
+        <% end %>
+    </table>
+      
+      <table class="table table-striped">
+	      <thead>
+		      <tr>
+			      <th>講座名</th>
+			      <th>日時</th>
+			      <th>詳細</th>
+		      </tr>
+	      </thead>
+        <tbody>
+　        <% @lessons = school.lessons %>
+　        <% @lessons.each do |lesson| %>
+            <tr>
+              <th><%= lesson.name %></th>
+              <th><%= lesson.lesson_date.strftime("%l月%e日 %k時%M分") %>〜<%= lesson.end_time.strftime("%k時%M分") %></th>
+　            <th><%= link_to "詳細", lesson_path(lesson) %></th>
+　          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+　<% end %>

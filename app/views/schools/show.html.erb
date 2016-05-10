@@ -1,0 +1,28 @@
+<h1>学習塾登録情報</h1>
+  <div class="row">
+    <dl class="dl-horizontal">
+      <dt>塾名</dt>
+      <dd><%= @current_school.name %></dd>
+      <dt>ホームページURL</dt>
+      <dd><%= @current_school.url %></dd>
+      <dt>電話番号</dt>
+      <dd><%= @current_school.phone %></dd>
+      <dt>塾の特徴</dt>
+      <dd><%= @current_school.chara %></dd>
+    </dl>
+  <%= link_to "登録情報の変更", edit_school_path(current_school) %>
+  </div>
+<h2>登録中の講座情報</h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>講座名</th>
+			<th>日時</th>
+			<th>変更/削除</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <%= render @lessons %>
+	</tbody>
+</table>
+ 

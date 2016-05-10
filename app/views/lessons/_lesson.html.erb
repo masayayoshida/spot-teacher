@@ -1,0 +1,7 @@
+
+  <tr>
+    <th><%= lesson.name %></th>
+    <th><%= lesson.lesson_date.strftime("%Y年%m月%d日 %H時%M分") %>〜<%= lesson.end_time.strftime("%H時%M分") %></th>
+    <th><%= link_to "変更", edit_lesson_path(lesson) %>
+    <%= link_to "削除", lesson, method: :delete, data: { confirm: "この講座を取り消しても良いですか？" } %></th>
+　</tr>
